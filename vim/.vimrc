@@ -51,6 +51,9 @@ Plug 'tpope/vim-fugitive'
 " Initialize plugin system
 call plug#end()
 
+" Airline
+let g:airline_theme='minimalist'
+
 " Autosave
 let g:auto_save=1 
 

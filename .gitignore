@@ -31,6 +31,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### Vim ###
+*.swp
+
 ### Zsh ###
 # Zsh compiled script + zrecompile backup
 *.zwc
