@@ -2,6 +2,8 @@
 
 A work-in-progress collection of dotfiles for tmux, vim and zsh on macOS.
 
+![Alt text](/assets/screenshot.png)
+
 ## References
 
 - https://github.com/tmux/tmux/wiki
