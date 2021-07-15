@@ -47,12 +47,13 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf'
 Plug 'tpope/vim-fugitive'
+Plug 'tmsvg/pear-tree'
 
 " Initialize plugin system
 call plug#end()
 
 " Airline
-let g:airline_theme='minimalist'
+let g:airline_theme="minimalist"
 
 " Autosave
 let g:auto_save=1 
@@ -80,3 +81,5 @@ let g:go_fmt_command = "goimports"
 " Status line types/signatures
 let g:go_auto_type_info = 1
 
+" Trigger intellisense on .
+au filetype go inoremap <buffer> . .<C-x><C-o>
