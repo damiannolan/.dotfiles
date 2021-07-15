@@ -49,7 +49,6 @@ function setupTmux() {
     echo "Linking tmux config"
     echo "==================================="
 
-    touch ~/.tmux.conf
     ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 }
 
