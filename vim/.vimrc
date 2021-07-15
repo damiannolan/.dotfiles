@@ -19,6 +19,7 @@ set history=1000
 set textwidth=120
 set ttyfast
 
+" TODO: Review below
 set noexpandtab " insert tabs rather than spaces for <Tab>
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
 set tabstop=4 " the visible width of tabs
