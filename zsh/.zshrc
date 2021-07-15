@@ -11,8 +11,6 @@ export ZSH="/Users/damiannolan/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="cdimascio-lambda"
 
-ZSH_TMUX_AUTOSTART="true"
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -69,7 +67,6 @@ plugins=(
   git
   golang
   themes
-  tmux
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -111,11 +108,4 @@ export PATH=$PATH:$GOBIN:$GOPATH
 
 # Node version manager
 export NVM_DIR="/Users/damiannolan/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Digital Ocean
-export DIGITALOCEAN_TOKEN=0df952cbc36a6eaf0be604aad2700e29888130b958641b27edba375de0381db5
-
-# Terraform
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
