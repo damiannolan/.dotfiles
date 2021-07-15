@@ -53,7 +53,6 @@ function setupTmux() {
 }
 
 function setupZsh() {
-
     echo "==================================="
     echo "Setting ZSH as default shell"
     echo "==================================="
