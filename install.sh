@@ -57,7 +57,7 @@ function setupZsh() {
     echo "Setting ZSH as default shell"
     echo "==================================="
 
-    ln -sf ~/dotfiles/zsh/.zshrc ~/.zhsrc
+    ln -sf ~/dotfiles/zsh/.zshrc ~/.zshrc
 
     chsh -s $(which zsh)
 }

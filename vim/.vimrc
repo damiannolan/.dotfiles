@@ -32,12 +32,6 @@ set completeopt+=longest
 set t_Co=256
 set background=dark
 
-" Enable mouse support
-if has('mouse')
-    set mouse=a
-    set ttymouse=xterm2
-endif
-
 " Plugins using vim-plug
 call plug#begin('~/.vim/plugged')
 

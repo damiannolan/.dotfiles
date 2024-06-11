@@ -109,3 +109,5 @@ export PATH=$PATH:$GOBIN:$GOPATH
 # Node version manager
 export NVM_DIR="/Users/damiannolan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+alias vim="nvim"
