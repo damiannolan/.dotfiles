@@ -66,6 +66,8 @@ ZSH_THEME="cdimascio-lambda"
 plugins=(
   git
   golang
+  gpg-agent
+  ssh-agent
   themes
 )
 
@@ -101,13 +103,19 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+# Lanuage
+export LANG=en
+
+# GPG
+export GPG_TTY=$(tty)
+
 # Golang
 export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
 export PATH=$PATH:$GOBIN:$GOPATH
 
 # Node version manager
-export NVM_DIR="/Users/damiannolan/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-alias vim="nvim"
