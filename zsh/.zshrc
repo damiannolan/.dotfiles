@@ -9,7 +9,6 @@ export ZSH="/Users/damiannolan/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="cdimascio-lambda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -119,3 +118,39 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+
+# bun completions
+[ -s "/Users/damiannolan/.bun/_bun" ] && source "/Users/damiannolan/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# scripting fns
+function git_commit_browser() {
+  # Ensure we are inside a Git repository
+  if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "❌ Not inside a Git repository!"
+    return 1
+  fi
+
+  # Use fzf to display commit history with a larger dropdown window
+  commit_hash=$(git log --pretty=format:"%h %C(yellow)%h%Creset %C(cyan)(%ad)%Creset %s %C(blue)- %an%Creset" --date=short --abbrev-commit --color=always |
+    fzf --ansi --no-sort \
+        --preview "git show --color=always {1}" \
+        --preview-window=right:75% \
+        --height=95% --border --reverse --min-height=20 \
+        --prompt="Select a commit: " --exit-0 |
+    awk '{print $1}')  # Extract correct commit hash
+
+  # Exit if no commit was selected
+  if [[ -z "$commit_hash" || "$commit_hash" == " " ]]; then
+    echo "❌ No commit selected. Exiting..."
+    return 0
+  fi
+
+  # Show commit details
+  clear
+  echo "✅ Showing details for commit: $commit_hash"
+  git show --color=always "$commit_hash" | less -R
+}
