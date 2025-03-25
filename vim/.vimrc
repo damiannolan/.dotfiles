@@ -78,3 +78,6 @@ let g:go_auto_type_info = 1
 
 " Trigger intellisense on .
 au filetype go inoremap <buffer> . .<C-x><C-o>
+
+nnoremap <C-p> :GFiles<Cr>
+
