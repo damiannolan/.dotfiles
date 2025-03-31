@@ -154,3 +154,32 @@ function git_commit_browser() {
   echo "✅ Showing details for commit: $commit_hash"
   git show --color=always "$commit_hash" | less -R
 }
+
+cleanlog() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: cleanlog <filename>"
+    return 1
+  fi
+
+  input_file="$1"
+
+  if [[ ! -f "$input_file" ]]; then
+    echo "File not found: $input_file"
+    return 1
+  fi
+
+  # Create a safe temp file in the same directory
+  tmp_file="$(dirname "$input_file")/.$(basename "$input_file").tmp"
+
+  # Clean the file by stripping ANSI codes
+  sed -E "s/\x1B\[[0-9;]*[mK]//g" "$input_file" > "$tmp_file"
+
+  if [[ $? -eq 0 ]]; then
+    mv "$tmp_file" "$input_file"
+    echo "✅ Cleaned ANSI codes from: $input_file"
+  else
+    echo "❌ Failed to clean file"
+    rm -f "$tmp_file"
+    return 1
+  fi
+}
