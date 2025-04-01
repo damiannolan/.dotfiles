@@ -126,6 +126,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # scripting fns
+# git_commit_browser uses fzf to display a preview window for gits commits selected through git log.
 function git_commit_browser() {
   # Ensure we are inside a Git repository
   if ! git rev-parse --is-inside-work-tree &>/dev/null; then
@@ -154,6 +155,7 @@ function git_commit_browser() {
   git show --color=always "$commit_hash" | less -R
 }
 
+# cleanlog strips ansi colour formatting from a provided filename using sed
 cleanlog() {
   if [[ -z "$1" ]]; then
     echo "Usage: cleanlog <filename>"
